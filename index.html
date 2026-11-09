@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Outguessing the Global Economy — Liquidity &amp; Outgues, Part 18</title>
+<style>
+  :root{
+    --bg:#0b0e14; --panel:#121826; --panel2:#0f1420; --line:#232c40;
+    --ink:#e6e9f0; --muted:#9aa4b8; --dim:#6b7690;
+    --gold:#d4a437; --green:#3fb68b; --red:#e0655f; --amber:#e0a63c; --blue:#5b8def;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55}
+  .wrap{max-width:1020px;margin:0 auto;padding:24px 18px 64px}
+  h1{font-size:30px;line-height:1.2;margin:6px 0 4px}
+  h2{font-size:20px;margin:34px 0 8px;border-bottom:1px solid var(--line);padding-bottom:6px}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--gold)}
+  p{margin:8px 0}
+  .sub{color:var(--muted);font-size:15px}
+  .kicker{color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-size:12px;font-weight:700}
+  .warn{background:#2a1512;border:1px solid #6e2f28;color:#f3c1bd;
+    border-radius:8px;padding:14px 16px;margin:18px 0;font-size:14px}
+  .warn b{color:#fff}
+  .note{background:var(--panel);border:1px solid var(--line);border-radius:8px;
+    padding:12px 16px;margin:14px 0;font-size:13.5px;color:var(--muted)}
+  .note b{color:var(--ink)}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0}
+  th,td{padding:7px 8px;text-align:right;border-bottom:1px solid var(--line)}
+  th:first-child,td:first-child{text-align:left}
+  th{color:var(--muted);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em}
+  td.num, th.num{font-variant-numeric:tabular-nums}
+  tr.hl td{color:var(--gold);font-weight:700}
+  .pill{display:inline-block;padding:2px 8px;border-radius:20px;font-size:12px;font-weight:700}
+  .pill.bull{background:#123626;color:var(--green)}
+  .pill.base{background:#1d2c4a;color:var(--blue)}
+  .pill.bear{background:#3a1d1a;color:var(--red)}
+  .seg{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .seg button{background:var(--panel);color:var(--ink);border:1px solid var(--line);
+    border-radius:8px;padding:8px 14px;font-size:14px;cursor:pointer}
+  .seg button.on{border-color:var(--gold);color:var(--gold);font-weight:700}
+  .grid{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:760px){.grid{grid-template-columns:1fr 1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .card h4{margin:0 0 8px;font-size:14px}
+  .card h4 span{color:var(--muted);font-weight:400}
+  .slider-row{display:grid;grid-template-columns:86px 1fr 44px;align-items:center;gap:10px;
+    font-size:13px;margin:6px 0}
+  .slider-row label{color:var(--muted)}
+  .slider-row output{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+  input[type=range]{width:100%;accent-color:var(--gold)}
+  select,button.run{background:var(--panel);color:var(--ink);border:1px solid var(--line);
+    border-radius:8px;padding:9px 12px;font-size:14px}
+  button.run{background:var(--gold);color:#14100a;border:none;font-weight:700;cursor:pointer}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+  .stat{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+  .stat .v{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+  .stat .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+  .bar-row{display:grid;grid-template-columns:64px 1fr 52px;gap:8px;align-items:center;
+    font-size:12px;margin:2px 0}
+  .bar-row .bin{color:var(--dim);text-align:right;font-variant-numeric:tabular-nums}
+  .bar{height:12px;background:var(--gold);border-radius:2px;min-width:1px}
+  .bar-row .cnt{color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+  footer{margin-top:44px;color:var(--dim);font-size:13px;border-top:1px solid var(--line);padding-top:16px}
+  .small{font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="kicker">Liquidity &amp; Outgues &middot; Part 18 &middot; November 7, 2026</p>
+<h1>Outguessing the Global Economy</h1>
+<p class="sub">Where global money is moving, why it is moving, where it is likely to
+move next — and which asset has the highest probability of outperforming.
+An interactive companion to the Part 18 research article. Data as of
+<strong>November 7, 2026</strong>; market scores dated November 6, 2026.</p>
+
+<div class="warn"><b>&#9888; The backtest failed — read this before using anything on this page.</b>
+The 10-year walk-forward backtest of the scoring method (Appendix A of the paper)
+does <b>not</b> validate it: the top-ranked asset beat the peer median in only
+<b>17.4%</b> of 12-month windows (n=109) vs ~50% for a random pick, and its
+top-1 portfolio compounded at <b>&minus;1.71%</b> a year vs <b>+8.07%</b> for
+equal-weight. The November 6 scores below are <b>judgements with a warning
+attached</b>, not validated signals. Every number on this page is a model
+estimate. This is research and education, not investment advice.</div>
+
+<h2>1 &middot; The ranking — November 6, 2026</h2>
+<p>Final Asset Attractiveness Scores (Part 13 weights). The Strategic
+Expectation Score is a fourth, <i>supplementary</i> dimension — reported
+separately, never part of the ranking. Regime: <b>Transition / Rotation</b>.</p>
+<table id="paperTable">
+<tr><th>Rank</th><th>Asset</th><th class="num">Macro</th><th class="num">Flow</th>
+<th class="num">Price/Val.</th><th class="num">Strategic Exp. (supp.)</th><th class="num">Final</th></tr>
+</table>
+<p class="small">The Gold / India-bonds tie at 57 is broken by flow confirmation in
+favour of Gold (Gold Flow 62 vs India bonds Flow 50). The highest-ranked asset
+is the one foreigners spent the year selling (about $31bn out) while domestic
+Indian institutions bought about $75bn — the ranking holds both halves at once.</p>
+
+<h2>2 &middot; Score playground — change the inputs, watch the ranking</h2>
+<p>Move the sliders to change each asset's Macro, Flow and Price/Valuation
+scores. The table re-ranks live on the <b>three-score average</b>. That
+average is a <b>diagnostic only</b>: it is <i>not</i> the paper's Final score,
+which embeds six further assessed components (Liquidity, Momentum, Relative
+yield, Currency, Historical analogue, Risk/reward) that the paper does not
+publish as numbers. Use this to see how sensitive the ranking is to each
+input — not to override the paper.</p>
+<div class="grid" id="sliders"></div>
+<h3>Live ranking by three-score average</h3>
+<table id="liveRank">
+<tr><th>Rank</th><th>Asset</th><th class="num">Macro</th><th class="num">Flow</th>
+<th class="num">Price/Val.</th><th class="num">3-score avg</th><th class="num">Paper Final</th></tr>
+</table>
+
+<h2>3 &middot; Scenarios — best / base / worst 12-month ranges</h2>
+<p>Scenario probabilities are model estimates, November 6, 2026:
+<span class="pill bull">Bull 30%</span>
+<span class="pill base">Base 45%</span>
+<span class="pill bear">Bear 25%</span>.
+Ranges are computed from the Table 7 observed mean/SD per asset with a
+stated &plusmn;0.5 SD regime shift (Bull +0.5, Base 0, Bear &minus;0.5); worst
+and best are the 5th and 95th percentiles. "Blended" is the full Monte
+Carlo result (100,000 draws across all three scenarios).</p>
+<div class="seg" id="scenarioSeg">
+  <button data-sc="Blended" class="on">Blended (all scenarios)</button>
+  <button data-sc="Bull">Bull — rotation completes</button>
+  <button data-sc="Base">Base — grinding transition</button>
+  <button data-sc="Bear">Bear — hike + energy shock</button>
+</div>
+<table id="rangeTable">
+<tr><th>Asset</th><th class="num">Worst (P5)</th><th class="num">Centre</th><th class="num">Best (P95)</th></tr>
+</table>
+<p class="small" id="rangeNote"></p>
+
+<h2>4 &middot; Monte Carlo simulator — run it yourself</h2>
+<p>10,000 draws, fixed seed <b>20261107</b> (same result every run).
+Returns are drawn from a Normal distribution with each asset's observed
+12-month mean/SD from Table 7, shifted by the selected scenario
+(&plusmn;0.5 SD; Blended mixes the three by their probabilities).
+P(outperform) = share of draws beating the cross-sectional median of the
+seven assets — the same definition Table 8 uses. Draws are independent
+across assets: a simplification, stated openly — see the comparison with
+the paper's empirical frequencies below the results.</p>
+<div class="seg">
+  <label style="align-self:center;color:var(--muted);font-size:14px">Asset
+    <select id="mcAsset"></select>
+  </label>
+  <button class="run" id="runBtn">Run simulation</button>
+</div>
+<div class="stats" id="mcStats"></div>
+<div class="card">
+  <h4>Distribution of simulated 12-month returns — <span id="histTitle">Gold</span></h4>
+  <div id="hist"></div>
+</div>
+<p class="small" id="mcCompare"></p>
+
+<div class="note"><b>What would prove this view wrong?</b> All three together, by
+end-November 2026: October US CPI hot enough on November 10 to lock in a December
+hike; Brent crude above $110 a barrel; and FPI flows into Indian equities negative
+again in November. Any one weakens the thesis; all three invalidate it.
+<b>Staleness:</b> October US CPI prints November 10 and the Fed meets December
+8–9, 2026 — either can change the regime, and these scores have not been re-run
+on fresh data.</div>
+
+<footer>
+<p><b>Sources.</b> All numbers trace to the Part 18 papers: full article v2
+(39 pp) and condensed edition (29 pp), November 7, 2026. Scores: Figure 3 /
+Table 5. Probabilities: Tables 7 and 8 (empirical frequencies, Wilson 95%
+CIs). Scenarios: Table 9. Next moves: Table 13. Backtest: Appendix A /
+Table 14. Full trace in <i>data/sources.md</i>; code in <i>src/</i>.</p>
+<p>By Bhupesh Chandra Dimri — Financial Analyst, JPMorgan Chase; M.S.
+Accounting Analytics &amp; Data Technology, Pace University (Dec 2025).
+Liquidity &amp; Outgues program, Part 18. Research and education, not
+investment advice.</p>
+</footer>
+</div>
+
+<script>
+"use strict";
+/* ============================================================
+   DATA — published in the Part 18 papers (see data/sources.md).
+   No external requests: everything on this page is embedded here.
+   ============================================================ */
+var PAPER = [
+  {asset:"India equities", macro:72, flow:48, price:50, ses:60, final:59},
+  {asset:"USD",            macro:60, flow:58, price:50, ses:57, final:58},
+  {asset:"Gold",           macro:60, flow:62, price:48, ses:58, final:57},
+  {asset:"India bonds",    macro:62, flow:50, price:62, ses:52, final:57},
+  {asset:"US Treasuries",  macro:55, flow:60, price:55, ses:54, final:56},
+  {asset:"Silver",         macro:55, flow:55, price:55, ses:55, final:55},
+  {asset:"US equities",    macro:58, flow:52, price:45, ses:52, final:53}
+];
+/* Table 7: observed mean / SD of 12-month USD total returns, backtest window. */
+var PARAMS = {
+  "India equities":{mean:8.4,  sd:19.5},
+  "USD":           {mean:0.4,  sd:6.4},
+  "Gold":          {mean:16.3, sd:18.8},
+  "India bonds":   {mean:1.7,  sd:4.3},
+  "US Treasuries": {mean:1.3,  sd:7.4},
+  "Silver":        {mean:21.0, sd:38.8},
+  "US equities":   {mean:13.8, sd:13.6}
+};
+/* Table 8: calibrated 12-month outperformance frequencies (empirical). */
+var EMPIRICAL = {
+  "India equities":44, "USD":28, "Gold":69, "India bonds":13,
+  "US Treasuries":16, "Silver":54, "US equities":77
+};
+/* Scenario ranges from src/monte_carlo.py (results/scenario_ranges.json),
+   plus the Blended row from the 100,000-draw run (median / P5 / P95). */
+var RANGES = {
+  "India equities":{Bull:{worst:-13.9,centre:18.1,best:50.2}, Base:{worst:-23.7,centre:8.4,best:40.5}, Bear:{worst:-33.4,centre:-1.3,best:30.7}, Blended:{worst:-25.3,centre:8.96,best:43.1}},
+  "USD":           {Bull:{worst:-6.9,centre:3.6,best:14.1},  Base:{worst:-10.1,centre:0.4,best:10.9}, Bear:{worst:-13.3,centre:-2.8,best:7.7},  Blended:{worst:-10.6,centre:0.60,best:11.8}},
+  "Gold":          {Bull:{worst:-5.2,centre:25.7,best:56.6}, Base:{worst:-14.6,centre:16.3,best:47.2},Bear:{worst:-24.0,centre:6.9,best:37.8},  Blended:{worst:-16.2,centre:16.70,best:49.8}},
+  "India bonds":   {Bull:{worst:-3.2,centre:3.8,best:10.9},  Base:{worst:-5.4,centre:1.7,best:8.8},  Bear:{worst:-7.5,centre:-0.4,best:6.6},  Blended:{worst:-5.8,centre:1.81,best:9.4}},
+  "US Treasuries": {Bull:{worst:-7.2,centre:5.0,best:17.2},  Base:{worst:-10.9,centre:1.3,best:13.5},Bear:{worst:-14.6,centre:-2.4,best:9.8},  Blended:{worst:-11.5,centre:1.50,best:14.5}},
+  "Silver":        {Bull:{worst:-23.4,centre:40.4,best:104.2},Base:{worst:-42.8,centre:21.0,best:84.8},Bear:{worst:-62.2,centre:1.6,best:65.4}, Blended:{worst:-46.1,centre:21.81,best:90.5}},
+  "US equities":   {Bull:{worst:-1.8,centre:20.6,best:43.0}, Base:{worst:-8.6,centre:13.8,best:36.2},Bear:{worst:-15.4,centre:7.0,best:29.4}, Blended:{worst:-9.5,centre:14.05,best:37.9}}
+};
+var SCEN_PROBS = {Bull:0.30, Base:0.45, Bear:0.25};
+var SHIFTS = {Bull:0.5, Base:0.0, Bear:-0.5};
+var SEED = 20261107, N_DRAWS = 10000;
+
+/* ============================================================
+   CORE LOGIC — pure functions, exposed as window.LOE so the
+   calculation can be tested headlessly (node) without a DOM.
+   ============================================================ */
+function mulberry32(a){
+  return function(){
+    a|=0; a=a+0x6D2B79F5|0;
+    var t=Math.imul(a^a>>>15,1|a);
+    t=t+Math.imul(t^t>>>7,61|t)^t;
+    return ((t^t>>>14)>>>0)/4294967296;
+  };
+}
+function randn(rng){
+  var u=0,v=0;
+  while(u===0) u=rng();
+  while(v===0) v=rng();
+  return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);
+}
+function rankThreeScore(scores){
+  /* scores: {asset:{macro,flow,price}} -> ranked by three-score mean,
+     ties broken by higher Flow (the paper's flow-confirmation rule). */
+  var rows=Object.keys(scores).map(function(a){
+    var s=scores[a];
+    return {asset:a, macro:s.macro, flow:s.flow, price:s.price,
+            avg:(s.macro+s.flow+s.price)/3};
+  });
+  rows.sort(function(x,y){
+    if(y.avg!==x.avg) return y.avg-x.avg;
+    return y.flow-x.flow;
+  });
+  return rows;
+}
+function simulateAll(scenario,n,seed){
+  /* Returns per-asset summaries for the chosen scenario. "Blended"
+     mixes Bull/Base/Bear by the Table 9 probabilities. */
+  var rng=mulberry32(seed);
+  var assets=Object.keys(PARAMS);
+  var draws={}; assets.forEach(function(a){draws[a]=new Array(n);});
+  for(var i=0;i<n;i++){
+    var reg=scenario;
+    if(scenario==="Blended"){
+      var r=rng();
+      reg = r<0.30 ? "Bull" : (r<0.75 ? "Base" : "Bear");
+    }
+    var shift=SHIFTS[reg];
+    for(var j=0;j<assets.length;j++){
+      var a=assets[j], p=PARAMS[a];
+      draws[a][i]=p.mean+shift*p.sd+p.sd*randn(rng);
+    }
+  }
+  var out={};
+  assets.forEach(function(a){
+    var d=draws[a].slice().sort(function(x,y){return x-y;});
+    var sum=0, loss=0, outp=0;
+    for(var i=0;i<n;i++){
+      sum+=draws[a][i];
+      if(draws[a][i]<0) loss++;
+      var col=assets.map(function(x){return draws[x][i];})
+                    .sort(function(x,y){return x-y;});
+      if(draws[a][i]>col[3]) outp++;
+    }
+    out[a]={
+      median:d[Math.floor(n/2)],
+      mean:sum/n,
+      pLoss:100*loss/n,
+      pOut:100*outp/n,
+      p5:d[Math.floor(0.05*n)],
+      p95:d[Math.floor(0.95*n)],
+      draws:draws[a]
+    };
+  });
+  return out;
+}
+if(typeof window!=="undefined"){
+  window.LOE={mulberry32:mulberry32, randn:randn,
+    rankThreeScore:rankThreeScore, simulateAll:simulateAll,
+    PAPER:PAPER, PARAMS:PARAMS, RANGES:RANGES};
+}
+
+/* ============================================================
+   PAGE — DOM wiring. Skipped entirely when there is no DOM
+   (headless test runs), so the logic above stays testable.
+   ============================================================ */
+function fmt(x,d){return (x>=0?"+":"")+x.toFixed(d===undefined?1:d)+"%";}
+function init(){
+  var i,j;
+  /* --- Section 1: paper table --- */
+  var pt=document.getElementById("paperTable");
+  PAPER.forEach(function(r,idx){
+    var tr=document.createElement("tr");
+    if(idx===0) tr.className="hl";
+    tr.innerHTML="<td>"+(idx+1)+"</td><td>"+r.asset+"</td><td class='num'>"+r.macro+
+      "</td><td class='num'>"+r.flow+"</td><td class='num'>"+r.price+
+      "</td><td class='num'>"+r.ses+"</td><td class='num'><b>"+r.final+"</b></td>";
+    pt.appendChild(tr);
+  });
+
+  /* --- Section 2: sliders --- */
+  var state={};
+  PAPER.forEach(function(r){state[r.asset]={macro:r.macro,flow:r.flow,price:r.price};});
+  var sliders=document.getElementById("sliders");
+  PAPER.forEach(function(r){
+    var card=document.createElement("div");
+    card.className="card";
+    var html="<h4>"+r.asset+" <span>paper Final "+r.final+"</span></h4>";
+    ["macro","flow","price"].forEach(function(k){
+      var label=k==="macro"?"Macro":(k==="flow"?"Flow":"Price/Val.");
+      html+="<div class='slider-row'><label>"+label+"</label>"+
+        "<input type='range' min='0' max='100' value='"+r[k]+
+        "' data-asset='"+r.asset+"' data-key='"+k+"'>"+
+        "<output id='o-"+r.asset+"-"+k+"'>"+r[k]+"</output></div>";
+    });
+    card.innerHTML=html;
+    sliders.appendChild(card);
+  });
+  function renderLive(){
+    var ranked=rankThreeScore(state);
+    var t=document.getElementById("liveRank");
+    while(t.rows.length>1) t.deleteRow(1);
+    ranked.forEach(function(r,idx){
+      var paper=PAPER.filter(function(p){return p.asset===r.asset;})[0];
+      var tr=document.createElement("tr");
+      if(idx===0) tr.className="hl";
+      tr.innerHTML="<td>"+(idx+1)+"</td><td>"+r.asset+"</td><td class='num'>"+r.macro+
+        "</td><td class='num'>"+r.flow+"</td><td class='num'>"+r.price+
+        "</td><td class='num'><b>"+r.avg.toFixed(1)+"</b></td><td class='num'>"+paper.final+"</td>";
+      t.appendChild(tr);
+    });
+  }
+  sliders.addEventListener("input",function(ev){
+    var el=ev.target;
+    if(!el.dataset || !el.dataset.asset) return;
+    state[el.dataset.asset][el.dataset.key]=parseInt(el.value,10);
+    document.getElementById("o-"+el.dataset.asset+"-"+el.dataset.key).textContent=el.value;
+    renderLive();
+  });
+  renderLive();
+
+  /* --- Section 3: scenario ranges --- */
+  var curSc="Blended";
+  var rangeNote=document.getElementById("rangeNote");
+  function renderRanges(){
+    var t=document.getElementById("rangeTable");
+    while(t.rows.length>1) t.deleteRow(1);
+    PAPER.forEach(function(r){
+      var v=RANGES[r.asset][curSc];
+      var tr=document.createElement("tr");
+      tr.innerHTML="<td>"+r.asset+"</td><td class='num'>"+fmt(v.worst)+
+        "</td><td class='num'><b>"+fmt(v.centre)+"</b></td><td class='num'>"+fmt(v.best)+"</td>";
+      t.appendChild(tr);
+    });
+    rangeNote.textContent = curSc==="Blended"
+      ? "Blended: centre is the simulated median and worst/best are the P5/P95 from the 100,000-draw Monte Carlo across all three scenarios."
+      : curSc+" scenario: centre is the observed mean shifted by "+(SHIFTS[curSc]>0?"+":"")+
+        SHIFTS[curSc]+" SD; worst/best are centre \u00B1 1.645 SD (90% interval, Normal assumption).";
+    var btns=document.querySelectorAll("#scenarioSeg button");
+    for(var k=0;k<btns.length;k++) btns[k].classList.toggle("on", btns[k].dataset.sc===curSc);
+  }
+  document.getElementById("scenarioSeg").addEventListener("click",function(ev){
+    if(ev.target.dataset && ev.target.dataset.sc){curSc=ev.target.dataset.sc; renderRanges();}
+  });
+  renderRanges();
+
+  /* --- Section 4: Monte Carlo --- */
+  var sel=document.getElementById("mcAsset");
+  PAPER.forEach(function(r){
+    var o=document.createElement("option");
+    o.value=r.asset; o.textContent=r.asset; sel.appendChild(o);
+  });
+  sel.value="Gold";
+  function runMC(){
+    var asset=sel.value;
+    var res=simulateAll(curSc,N_DRAWS,SEED)[asset];
+    var st=document.getElementById("mcStats");
+    function stat(k,v){return "<div class='stat'><div class='v'>"+v+"</div><div class='k'>"+k+"</div></div>";}
+    st.innerHTML =
+      stat("Median 12M",fmt(res.median,2))+
+      stat("Mean 12M",fmt(res.mean,2))+
+      stat("P(loss)",res.pLoss.toFixed(1)+"%")+
+      stat("P(outperform)",res.pOut.toFixed(1)+"%")+
+      stat("Worst (P5)",fmt(res.p5))+
+      stat("Best (P95)",fmt(res.p95));
+    document.getElementById("histTitle").textContent=
+      asset+" — "+curSc+" scenario, "+N_DRAWS.toLocaleString()+" draws";
+    /* histogram: 20 bins */
+    var d=res.draws, lo=Math.min.apply(null,d), hi=Math.max.apply(null,d);
+    var bins=new Array(20).fill(0), w=(hi-lo)/20||1;
+    d.forEach(function(x){var b=Math.min(19,Math.max(0,Math.floor((x-lo)/w))); bins[b]++;});
+    var mx=Math.max.apply(null,bins), html="";
+    bins.forEach(function(c,bi){
+      var edge=lo+bi*w;
+      html+="<div class='bar-row'><span class='bin'>"+fmt(edge,0)+
+        "</span><span><span class='bar' style='display:block;width:"+
+        (100*c/mx).toFixed(1)+"%'></span></span><span class='cnt'>"+c+"</span></div>";
+    });
+    document.getElementById("hist").innerHTML=html;
+    document.getElementById("mcCompare").textContent=
+      "Comparison: this simulation's P(outperform) for "+asset+" is "+
+      res.pOut.toFixed(1)+"%; the paper's empirical Table 8 frequency is "+
+      EMPIRICAL[asset]+"% (12M, n=109). The gap is the price of the "+
+      "independence assumption and the \u00B10.5 SD regime shifts — read "+
+      "MONTE_CARLO.md for the full comparison across all seven assets.";
+  }
+  document.getElementById("runBtn").addEventListener("click",runMC);
+  document.getElementById("scenarioSeg").addEventListener("click",runMC);
+  sel.addEventListener("change",runMC);
+  runMC();
+}
+if(typeof document!=="undefined"){
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",init);
+  }else{ init(); }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+{
+  "seed": 20261107,
+  "n_draws": 100000,
+  "regime_probabilities": {
+    "Bull": 0.3,
+    "Base": 0.45,
+    "Bear": 0.25
+  },
+  "regime_shifts_sd": {
+    "Bull": 0.5,
+    "Base": 0.0,
+    "Bear": -0.5
+  },
+  "assets": {
+    "India equities": {
+      "median_12m_pct": 8.96,
+      "mean_12m_pct": 8.9,
+      "sd_12m_pct": 20.83,
+      "p_loss_pct": 33.5,
+      "p_outperform_pct": 50.4,
+      "p5_pct": -25.3,
+      "p95_pct": 43.1,
+      "empirical_12m_outperform_pct": 44.0,
+      "empirical_ci": [
+        35.0,
+        53.0
+      ],
+      "sim_minus_empirical_pp": 6.4
+    },
+    "USD": {
+      "median_12m_pct": 0.6,
+      "mean_12m_pct": 0.6,
+      "sd_12m_pct": 6.81,
+      "p_loss_pct": 46.4,
+      "p_outperform_pct": 15.3,
+      "p5_pct": -10.6,
+      "p95_pct": 11.8,
+      "empirical_12m_outperform_pct": 28.0,
+      "empirical_ci": [
+        20.0,
+        37.0
+      ],
+      "sim_minus_empirical_pp": -12.7
+    },
+    "Gold": {
+      "median_12m_pct": 16.7,
+      "mean_12m_pct": 16.73,
+      "sd_12m_pct": 20.04,
+      "p_loss_pct": 20.3,
+      "p_outperform_pct": 67.5,
+      "p5_pct": -16.2,
+      "p95_pct": 49.8,
+      "empirical_12m_outperform_pct": 69.0,
+      "empirical_ci": [
+        60.0,
+        77.0
+      ],
+      "sim_minus_empirical_pp": -1.5
+    },
+    "India bonds": {
+      "median_12m_pct": 1.81,
+      "mean_12m_pct": 1.8,
+      "sd_12m_pct": 4.6,
+      "p_loss_pct": 34.7,
+      "p_outperform_pct": 17.1,
+      "p5_pct": -5.8,
+      "p95_pct": 9.4,
+      "empirical_12m_outperform_pct": 13.0,
+      "empirical_ci": [
+        8.0,
+        20.0
+      ],
+      "sim_minus_empirical_pp": 4.1
+    },
+    "US Treasuries": {
+      "median_12m_pct": 1.5,
+      "mean_12m_pct": 1.5,
+      "sd_12m_pct": 7.9,
+      "p_loss_pct": 42.4,
+      "p_outperform_pct": 19.7,
+      "p5_pct": -11.5,
+      "p95_pct": 14.5,
+      "empirical_12m_outperform_pct": 16.0,
+      "empirical_ci": [
+        10.0,
+        24.0
+      ],
+      "sim_minus_empirical_pp": 3.7
+    },
+    "Silver": {
+      "median_12m_pct": 21.81,
+      "mean_12m_pct": 22.01,
+      "sd_12m_pct": 41.42,
+      "p_loss_pct": 29.8,
+      "p_outperform_pct": 63.6,
+      "p5_pct": -46.1,
+      "p95_pct": 90.5,
+      "empirical_12m_outperform_pct": 54.0,
+      "empirical_ci": [
+        45.0,
+        63.0
+      ],
+      "sim_minus_empirical_pp": 9.6
+    },
+    "US equities": {
+      "median_12m_pct": 14.05,
+      "mean_12m_pct": 14.08,
+      "sd_12m_pct": 14.46,
+      "p_loss_pct": 16.5,
+      "p_outperform_pct": 66.4,
+      "p5_pct": -9.5,
+      "p95_pct": 37.9,
+      "empirical_12m_outperform_pct": 77.0,
+      "empirical_ci": [
+        68.0,
+        84.0
+      ],
+      "sim_minus_empirical_pp": -10.6
+    }
+  }
+}

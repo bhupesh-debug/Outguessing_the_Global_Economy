@@ -1,0 +1,4 @@
+scenario,probability_pct,trigger,capital_flow_consequence,asset_price_consequence
+Bull: rotation completes,30,Oct CPI soft Nov 10; Fed signals pause; FPI buying broadens,FPI returns to India at scale; dollar tops,India equities lead; gold recovers; US Treasuries rally
+Base: grinding transition,45,CPI in line; Dec hike delivered; rotation stays selective,FPI trickle continues; DII anchors India,India equities grind higher; US equities range-bound; dollar firm
+Bear: hike + energy shock,25,CPI hot; Brent breaks $110; Strait of Hormuz disruption,FPI reverses; flight to USD and cash,US equities fall; INR weakens; gold rises on safety then falls on real yields

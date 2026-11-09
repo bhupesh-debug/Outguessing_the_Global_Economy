@@ -1,0 +1,15 @@
+metric,top1_portfolio,equal_weight_benchmark,note
+cagr_pct,-1.71,8.07,Top-1 portfolio compounded annually vs equal-weight benchmark
+sharpe,-0.33,0.67,Sharpe ratio
+max_drawdown_pct,-31.5,-11.8,Maximum drawdown
+hit_rate_12m_pct,17.4,50.0,Share of 12-month windows the top-ranked asset beat the peer median; benchmark is the ~50% a random pick achieves (n=109)
+hit_rate_1m_pct,31.7,50.0,n=120
+hit_rate_3m_pct,29.7,50.0,n=118
+hit_rate_6m_pct,26.1,50.0,n=115
+rank_ic,-0.202,,Correlation between the score ranking and the forward 12-month return ranking (median -0.25; positive in 25.7% of months)
+top3_minus_bottom3_12m_pp,-5.44,,Top-3 ranked assets minus bottom-3, average 12-month return gap (median -4.70pp; positive in 33.9% of months)
+inverted_lowest_scored_cagr_pct,7.31,,Picking the lowest-scored asset each month compounded at +7.31% a year (still below equal-weight)
+inverted_hit_rate_12m_pct,35.8,,Lowest-scored asset beat the peer median in 35.8% of 12-month windows
+decisions,120,,Monthly decisions November 2016-October 2026
+five_year_subsample_hit_rate_12m_pct,12.2,,November 2021-October 2026, Flow components live (6 of 49)
+us_equities_ranked_first_count,0,,US equities never ranked #1 in 120 decisions — the asset that beat the peer median in 77% of 12-month windows

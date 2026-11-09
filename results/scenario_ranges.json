@@ -1,0 +1,121 @@
+{
+  "India equities": {
+    "Bull": {
+      "worst_p5_pct": -13.9,
+      "base_centre_pct": 18.1,
+      "best_p95_pct": 50.2
+    },
+    "Base": {
+      "worst_p5_pct": -23.7,
+      "base_centre_pct": 8.4,
+      "best_p95_pct": 40.5
+    },
+    "Bear": {
+      "worst_p5_pct": -33.4,
+      "base_centre_pct": -1.3,
+      "best_p95_pct": 30.7
+    }
+  },
+  "USD": {
+    "Bull": {
+      "worst_p5_pct": -6.9,
+      "base_centre_pct": 3.6,
+      "best_p95_pct": 14.1
+    },
+    "Base": {
+      "worst_p5_pct": -10.1,
+      "base_centre_pct": 0.4,
+      "best_p95_pct": 10.9
+    },
+    "Bear": {
+      "worst_p5_pct": -13.3,
+      "base_centre_pct": -2.8,
+      "best_p95_pct": 7.7
+    }
+  },
+  "Gold": {
+    "Bull": {
+      "worst_p5_pct": -5.2,
+      "base_centre_pct": 25.7,
+      "best_p95_pct": 56.6
+    },
+    "Base": {
+      "worst_p5_pct": -14.6,
+      "base_centre_pct": 16.3,
+      "best_p95_pct": 47.2
+    },
+    "Bear": {
+      "worst_p5_pct": -24.0,
+      "base_centre_pct": 6.9,
+      "best_p95_pct": 37.8
+    }
+  },
+  "India bonds": {
+    "Bull": {
+      "worst_p5_pct": -3.2,
+      "base_centre_pct": 3.8,
+      "best_p95_pct": 10.9
+    },
+    "Base": {
+      "worst_p5_pct": -5.4,
+      "base_centre_pct": 1.7,
+      "best_p95_pct": 8.8
+    },
+    "Bear": {
+      "worst_p5_pct": -7.5,
+      "base_centre_pct": -0.4,
+      "best_p95_pct": 6.6
+    }
+  },
+  "US Treasuries": {
+    "Bull": {
+      "worst_p5_pct": -7.2,
+      "base_centre_pct": 5.0,
+      "best_p95_pct": 17.2
+    },
+    "Base": {
+      "worst_p5_pct": -10.9,
+      "base_centre_pct": 1.3,
+      "best_p95_pct": 13.5
+    },
+    "Bear": {
+      "worst_p5_pct": -14.6,
+      "base_centre_pct": -2.4,
+      "best_p95_pct": 9.8
+    }
+  },
+  "Silver": {
+    "Bull": {
+      "worst_p5_pct": -23.4,
+      "base_centre_pct": 40.4,
+      "best_p95_pct": 104.2
+    },
+    "Base": {
+      "worst_p5_pct": -42.8,
+      "base_centre_pct": 21.0,
+      "best_p95_pct": 84.8
+    },
+    "Bear": {
+      "worst_p5_pct": -62.2,
+      "base_centre_pct": 1.6,
+      "best_p95_pct": 65.4
+    }
+  },
+  "US equities": {
+    "Bull": {
+      "worst_p5_pct": -1.8,
+      "base_centre_pct": 20.6,
+      "best_p95_pct": 43.0
+    },
+    "Base": {
+      "worst_p5_pct": -8.6,
+      "base_centre_pct": 13.8,
+      "best_p95_pct": 36.2
+    },
+    "Bear": {
+      "worst_p5_pct": -15.4,
+      "base_centre_pct": 7.0,
+      "best_p95_pct": 29.4
+    }
+  }
+}
